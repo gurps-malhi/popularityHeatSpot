@@ -12817,7 +12817,7 @@ h3 {
 }
 
 /*end*/
-/*seating ares styling -start*/
+/*seating area styling -start*/
 .seat-intro {
   position: relative;
   z-index: 10;
@@ -12836,7 +12836,7 @@ h3 {
 .seating {
   position: relative;
   z-index: 10;
-  margin: 4rem auto 7rem;
+  margin: 4rem auto 2rem;
   width: 700px;
   background-color: #24242a;
   padding: 3rem;
@@ -12915,6 +12915,14 @@ h3 {
   -webkit-transform: skewY(-14deg);
   height: 100%;
   z-index: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */

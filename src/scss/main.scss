@@ -43,7 +43,7 @@
 @include squares-only(50px,50px,50%,50%);
 }
 /*end*/
-/*seating ares styling -start*/
+/*seating area styling -start*/
 .seat-intro{
     position:relative;
     z-index: 10;
@@ -68,7 +68,7 @@
               text-align: center;
               padding:0.25rem;
               color: $text-color;
-          }
+            }
       }
       @include seating();
   }
@@ -110,6 +110,13 @@
     height: 100%;
     z-index: 0;
 }
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {  }

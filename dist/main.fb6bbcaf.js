@@ -26690,33 +26690,54 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: 'App',
   data: function data() {
     return {
       message: '',
       seats: $seats,
-      circleSize: 0
+      check_pop: true,
+      runOnce: true,
+      timesBy: 2
     };
   },
-  methods: {},
-  mounted: function mounted() {
-    var str;
-    var popString;
+  methods: {
+    toggle: function toggle() {
+      if (this.check_pop) {
+        var popString = '';
 
-    for (var i = 0; i <= this.seats.length - 1; i++) {
-      popString = this.seats[i].popularity;
-      var hasPct = popString.includes("%");
+        if (this.runOnce) {
+          for (var i = 0; i <= this.seats.length - 1; i++) {
+            popString = this.seats[i].popularity;
 
-      if (hasPct) {
-        str = popString;
-        str = str.slice(0, -1);
-        popString = parseInt(str);
+            if (popString.includes("%")) {
+              popString.slice(0, -1);
+              popString = parseInt(popString);
+            }
+
+            this.seats[i].popularity = popString * this.timesBy;
+            popString = '';
+          }
+
+          this.runOnce = false;
+        }
+
+        this.check_pop = false;
+      } else {
+        this.check_pop = true;
       }
-
-      this.seats[i].popularity = popString * 1.6;
     }
-  }
+  },
+  mounted: function mounted() {}
 };
 exports.default = _default;
 var $seats = [{
@@ -26792,14 +26813,14 @@ var $seats = [{
   "seatNo": 23,
   "popularity": "80%"
 }];
-        var $d90c07 = exports.default || module.exports;
+        var $127d2a = exports.default || module.exports;
       
-      if (typeof $d90c07 === 'function') {
-        $d90c07 = $d90c07.options;
+      if (typeof $127d2a === 'function') {
+        $127d2a = $127d2a.options;
       }
     
         /* template */
-        Object.assign($d90c07, (function () {
+        Object.assign($127d2a, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -26812,19 +26833,74 @@ var $seats = [{
         "div",
         { staticClass: "seating-container" },
         _vm._l(_vm.seats, function(seat) {
-          return _c("div", { staticClass: "outer-circle" }, [
-            _vm._v("\n        " + _vm._s(seat.seatNo) + "   \n    "),
-            _c("div", {
-              staticClass: "pop-circle",
-              style: {
-                width: seat.popularity + "px",
-                height: seat.popularity + "px"
-              },
-              attrs: { id: seat.seatNo }
-            })
-          ])
+          return _c(
+            "div",
+            { staticClass: "outer-circle" },
+            [
+              _vm._v("\n        " + _vm._s(seat.seatNo) + "   \n    "),
+              _c("transition", { attrs: { name: "fade" } }, [
+                !_vm.check_pop
+                  ? _c("div", {
+                      staticClass: "pop-circle",
+                      style: {
+                        width: seat.popularity + "px",
+                        height: seat.popularity + "px"
+                      },
+                      attrs: { id: seat.seatNo }
+                    })
+                  : _vm._e()
+              ])
+            ],
+            1
+          )
         }),
         0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center mb-5" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-dark d-inline-block px-3 py-2 rounded",
+          on: {
+            click: function($event) {
+              return _vm.toggle()
+            }
+          }
+        },
+        [
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.check_pop,
+                  expression: "check_pop"
+                }
+              ]
+            },
+            [_vm._v("Show")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.check_pop,
+                  expression: "!check_pop"
+                }
+              ]
+            },
+            [_vm._v("Hide")]
+          ),
+          _vm._v("  \n        seat popularity \n        ")
+        ]
       )
     ])
   ])
@@ -26856,9 +26932,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$d90c07', $d90c07);
+            api.createRecord('$127d2a', $127d2a);
           } else {
-            api.reload('$d90c07', $d90c07);
+            api.reload('$127d2a', $127d2a);
           }
         }
 
@@ -26914,7 +26990,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51065" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
