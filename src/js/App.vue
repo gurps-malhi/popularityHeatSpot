@@ -6,7 +6,7 @@
       <h5>Stage</h5>
     </div>
       <div class="seating-container">
-        <div class="outer-circle" v-for="seat in seats">
+        <div class="outer-circle" v-for="(seat, index) in seats" :key="index">
             {{seat.seatNo}}   
         <transition name="fade">
         <div class="pop-circle" :id="seat.seatNo"  v-if="!check_pop" :style="{ width:seat.popularity + 'px', height:seat.popularity + 'px' }">  
@@ -23,6 +23,7 @@
             </button>
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -38,6 +39,7 @@ export default {
     };
   },
   methods:{
+  
     toggle:function(){
     if(this.check_pop){
       let popString = '';
@@ -158,8 +160,8 @@ export default {
       "popularity":"80%",
     },
      {
-      "seatNo": 23,
-      "popularity":"80%",
+      "seatNo": 24,
+      "popularity":"43%",
     },
     
  ]
