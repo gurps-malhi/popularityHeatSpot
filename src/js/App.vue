@@ -35,7 +35,7 @@ export default {
       seats:$seats,
       check_pop: true,
       runOnce: true,
-      timesBy: 2
+      timesBy: 3
     };
   },
   methods:{
